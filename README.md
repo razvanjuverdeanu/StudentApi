@@ -10,8 +10,8 @@ This project is an API created with Spring Boot. I have implemented the followin
 
 
 #Setup
-Install Java 8
-Install postgresql
+- Install Java 8
+- Install postgresql
 
 When you have all of the above, clone this repository and just run it. 
 
