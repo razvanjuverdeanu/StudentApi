@@ -1,9 +1,9 @@
 package com.example.StudentApi.model.resource;
 
 
+import com.example.StudentApi.validation.ValidatDate;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
-import com.example.StudentApi.validation.ValidatDate;
 
 import javax.validation.constraints.*;
 import java.time.LocalDate;
