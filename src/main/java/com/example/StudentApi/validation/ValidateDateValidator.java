@@ -7,29 +7,28 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.time.LocalDate;
 
-
 public class ValidateDateValidator implements ConstraintValidator<ValidatDate, Object> {
 
-  @Override
-  public boolean isValid (Object value, ConstraintValidatorContext context) {
+    @Override
+    public boolean isValid(Object value, ConstraintValidatorContext context) {
 
-    if (value instanceof StudentRequestResource) {
-      StudentRequestResource requestResource = (StudentRequestResource) value;
+        if (value instanceof StudentRequestResource) {
+            StudentRequestResource requestResource = (StudentRequestResource) value;
 
-      return validateDate(requestResource.getDateOfBirth());
-    }
-    return true;
-  }
-
-
-  private boolean validateDate (LocalDate date) {
-
-    if (date != null) {
-      if (date.getYear() < LocalDate.now().getYear() - 100 || date.getYear() > LocalDate.now().getYear() - 18) {
-        return false;
-      }
+            return validateDate(requestResource.getDateOfBirth());
+        }
+        return true;
     }
 
-    return true;
-  }
+
+    private boolean validateDate(LocalDate date) {
+
+        if (date != null) {
+            if (date.getYear() < LocalDate.now().getYear() - 100 || date.getYear() > LocalDate.now().getYear() - 18) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }

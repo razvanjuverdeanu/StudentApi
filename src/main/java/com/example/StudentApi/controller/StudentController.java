@@ -5,13 +5,18 @@ import com.example.StudentApi.mapper.StudentMapper;
 import com.example.StudentApi.model.resource.StudentRequestResource;
 import com.example.StudentApi.model.resource.StudentResponseResource;
 import com.example.StudentApi.service.StudentService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +31,14 @@ public class StudentController {
 
     private final StudentMapper studentMapper;
 
-
+    @Operation(summary = "Get all students", description = "Get a list of all students")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found all the students",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = StudentRequestResource.class))}),
+            @ApiResponse(responseCode = "404", description = "No students were found",
+                    content = @Content)
+    })
     @GetMapping
     public List<StudentResponseResource> getAllStudents() {
 
@@ -37,18 +49,33 @@ public class StudentController {
         return responseResources;
     }
 
-
+    @Operation(summary = "Get student by id", description = "Get student by id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found student by id ",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = StudentRequestResource.class))}),
+            @ApiResponse(responseCode = "404", description = "No student was found by id",
+                    content = @Content)
+    })
     @GetMapping(path = "{id}")
-    public StudentResponseResource getStudent(@PathVariable Long id) {
+    public ResponseEntity<StudentResponseResource> getStudent(@PathVariable Long id) {
 
-        return studentMapper.mapToDto(studentService.getStudentById(id));
+        StudentResponseResource responseResource = studentMapper.mapToDto(studentService.getStudentById(id));
+        return new ResponseEntity<>(responseResource, HttpStatus.OK);
 
     }
 
-
+    @Operation(summary = "Create student", description = "Create student")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Student created",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = StudentRequestResource.class))}),
+            @ApiResponse(responseCode = "400", description = "Broken rule",
+                    content = @Content)
+    })
     @PostMapping
     public ResponseEntity<StudentResponseResource> createStudent(
-            @RequestBody @Validated StudentRequestResource requestResource
+            @RequestBody @Valid StudentRequestResource requestResource
     ) {
 
         Long id = studentService.createStudent(studentMapper.mapFromDto(requestResource));
@@ -59,10 +86,20 @@ public class StudentController {
     }
 
 
+    @Operation(summary = "Update student by id", description = "Update student by id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Student by id was updated",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = StudentRequestResource.class))}),
+            @ApiResponse(responseCode = "400", description = "Broken rule",
+                    content = @Content),
+            @ApiResponse(responseCode = "404", description = "No student was found by id",
+                    content = @Content)
+    })
     @PutMapping(path = "{id}")
     public ResponseEntity<StudentResponseResource> updateStudent(
             @PathVariable Long id,
-            @RequestBody @Validated StudentRequestResource requestResource
+            @RequestBody @Valid StudentRequestResource requestResource
     ) {
 
         studentService.updateStudent(id, requestResource);
@@ -70,11 +107,21 @@ public class StudentController {
         return ResponseEntity.ok(responseResource);
     }
 
-
+    @Operation(summary = "Partial update student by id", description = "Partial update student by id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Student by id was partially updated",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = StudentRequestResource.class))}),
+            @ApiResponse(responseCode = "400", description = "Broken rule",
+                    content = @Content),
+            @ApiResponse(responseCode = "404", description = "No student was found by id",
+                    content = @Content)
+    })
     @PatchMapping(path = "{id}")
     public ResponseEntity<StudentResponseResource> partialUpdateStudent(
             @PathVariable Long id,
             @RequestBody StudentRequestResource requestResource
+
     ) {
 
         studentService.partialUpdateStudent(id, requestResource);
@@ -82,7 +129,14 @@ public class StudentController {
         return ResponseEntity.ok(responseResource);
     }
 
-
+    @Operation(summary = "Delete student by id", description = "Delete student by id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Student by id was deleted",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = StudentRequestResource.class))}),
+            @ApiResponse(responseCode = "404", description = "No student was found by id",
+                    content = @Content)
+    })
     @DeleteMapping(path = "{id}")
     public ResponseEntity<String> deleteStudent(@PathVariable(value = "id") Long id) {
 
@@ -91,7 +145,14 @@ public class StudentController {
 
     }
 
-
+    @Operation(summary = "Delete all students", description = "Delete all students")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "All students were removed",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = StudentRequestResource.class))}),
+            @ApiResponse(responseCode = "404", description = "No students were found",
+                    content = @Content)
+    })
     @DeleteMapping()
     public ResponseEntity<String> deleteAllStudents() {
 
