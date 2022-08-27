@@ -13,7 +13,7 @@ This project is an API created with Spring Boot. I have implemented the followin
 ## The api is published on Heroku platform, in case you don't want to set locally.
 ## More details can be found here -> https://studentapi-app.herokuapp.com/swagger-ui/index.html
 
-#Local Setup
+# Local Setup
 - Install Java 8
 - Install postgresql
 
