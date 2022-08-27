@@ -31,6 +31,7 @@ public class StudentController {
 
     private final StudentMapper studentMapper;
 
+
     @Operation(summary = "Get all students", description = "Get a list of all students")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Found all the students",
