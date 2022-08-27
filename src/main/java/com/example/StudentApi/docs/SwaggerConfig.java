@@ -34,10 +34,8 @@ public class SwaggerConfig {
                 .build()
                 .additionalModels(typeResolver.resolve(StudentRequestResource.class))
                 .additionalModels(typeResolver.resolve(StudentResponseResource.class))
-//                .pathMapping("/app/v1/students")
                 .useDefaultResponseMessages(true)
                 .apiInfo(apiInfo());
-
     }
 
 

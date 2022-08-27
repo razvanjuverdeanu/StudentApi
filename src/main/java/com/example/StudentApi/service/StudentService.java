@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.transaction.Transactional;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -52,7 +51,7 @@ public class StudentService implements IStudentService {
     @Override
     public Long createStudent(Student student) {
 
-        validateMail(student.getEmail());
+        checkMailExistance(student.getEmail());
 
         student.setAge(calculateAge(student.getDateOfBirth()));
 
@@ -69,7 +68,7 @@ public class StudentService implements IStudentService {
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format(STUDENT_ID_NOT_FOUND, id)));
 
         if (requestResource.getEmail() != null) {
-            validateMail(requestResource.getEmail());
+            checkMailExistance(requestResource.getEmail());
         }
 
         studentEntityToBeUpdated.setName(requestResource.getName());
@@ -91,7 +90,7 @@ public class StudentService implements IStudentService {
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND, String.format(STUDENT_ID_NOT_FOUND, id)));
 
         if (requestResource.getEmail() != null) {
-            validateMail(requestResource.getEmail());
+            checkMailExistance(requestResource.getEmail());
         }
 
         studentEntityToBePartialUpdate.setName(requestResource.getName() == null ?
@@ -108,10 +107,6 @@ public class StudentService implements IStudentService {
 
         studentEntityToBePartialUpdate.setEmail(requestResource.getEmail() == null ?
                 studentEntityToBePartialUpdate.getEmail() : requestResource.getEmail());
-
-        if (requestResource.getDateOfBirth() != null) {
-            validateDate(requestResource.getDateOfBirth());
-        }
 
         studentEntityToBePartialUpdate.setDateOfBirth(requestResource.getDateOfBirth() == null ?
                 studentEntityToBePartialUpdate.getDateOfBirth() : requestResource.getDateOfBirth());
@@ -156,19 +151,11 @@ public class StudentService implements IStudentService {
     }
 
 
-    private void validateMail(String mail) {
+    private void checkMailExistance(String mail) {
 
         Optional<StudentEntity> responseResource = studentRepository.findStudentByEmail(mail);
         if (responseResource.isPresent()) {
             throw new IllegalStateException(String.format(EMAIL_EXISTS, mail));
         }
     }
-
-    private void validateDate(LocalDate date) {
-        if (date.getYear() < LocalDate.now().getYear() - 100 || date.getYear() > LocalDate.now().getYear() - 18) {
-            throw new IllegalStateException(AGE_BETWEEN_18_AND_100);
-        }
-    }
-
-
 }
