@@ -122,9 +122,7 @@ public class StudentController {
     @PatchMapping(path = "{id}")
     public ResponseEntity<StudentResponseResource> partialUpdateStudent(
             @PathVariable Long id,
-            @Validated @RequestBody StudentRequestResource requestResource,
-            @RequestParam(name = "name", required = false) String name
-
+            @Validated @RequestBody StudentRequestResource requestResource
     ) {
 
         studentService.partialUpdateStudent(id, requestResource);
