@@ -1,3 +1,5 @@
+
+
 # StudentApi
 This project is an API created with Spring Boot. I have implemented the following requests:
 - GET (ALL)
@@ -8,8 +10,9 @@ This project is an API created with Spring Boot. I have implemented the followin
 - DELETE (ALL)
 - DELETE BY ID
 
+## The API is public exposed, more details can be found here -> https://studentapi-app.herokuapp.com/swagger-ui/index.html
 
-#Setup
+#Local Setup
 - Install Java 8
 - Install postgresql
 
