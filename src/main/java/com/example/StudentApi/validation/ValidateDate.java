@@ -8,8 +8,8 @@ import java.lang.annotation.RetentionPolicy;
 
 
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = ValidateDateValidator.class)
-public @interface ValidatDate {
+@Constraint(validatedBy = DateValidator.class)
+public @interface ValidateDate {
 
   String[] value ();
 

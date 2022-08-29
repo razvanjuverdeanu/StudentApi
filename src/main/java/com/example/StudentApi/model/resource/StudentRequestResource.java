@@ -1,7 +1,7 @@
 package com.example.StudentApi.model.resource;
 
 
-import com.example.StudentApi.validation.ValidatDate;
+import com.example.StudentApi.validation.ValidateDate;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
@@ -14,7 +14,7 @@ import static com.example.StudentApi.utils.Constants.*;
 
 
 @Data
-@ValidatDate(value = {"dateOfBirth"}, message = AGE_BETWEEN_18_AND_100)
+@ValidateDate(value = {"dateOfBirth"}, message = AGE_BETWEEN_18_AND_100)
 public class StudentRequestResource {
 
     @Pattern(regexp = "^[a-zA-Z]+$", message = ONLY_LETTERS)
