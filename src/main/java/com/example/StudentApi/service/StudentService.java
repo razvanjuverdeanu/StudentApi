@@ -22,14 +22,13 @@ import static com.example.StudentApi.utils.Constants.*;
 
 @Service
 @RequiredArgsConstructor
-public class StudentService implements IStudentService {
+public class StudentService {
 
     private final StudentRepository studentRepository;
 
     private final StudentMapper studentMapper;
 
 
-    @Override
     public List<Student> getStudents() {
 
         List<Student> students = new ArrayList<>();
@@ -41,14 +40,12 @@ public class StudentService implements IStudentService {
     }
 
 
-    @Override
     public Student getStudentById(Long id) {
 
         return studentMapper.mapFromEntity(getStudentEntity(id));
     }
 
 
-    @Override
     public Long createStudent(Student student) {
 
         checkMailExistance(student.getEmail());
@@ -60,7 +57,6 @@ public class StudentService implements IStudentService {
     }
 
 
-    @Override
     @Transactional
     public void updateStudent(Long id, StudentRequestResource requestResource) {
 
@@ -82,7 +78,6 @@ public class StudentService implements IStudentService {
     }
 
 
-    @Override
     @Transactional
     public void partialUpdateStudent(Long id, StudentRequestResource requestResource) {
 
@@ -117,7 +112,6 @@ public class StudentService implements IStudentService {
     }
 
 
-    @Override
     public void deleteStudent(Long id) {
 
         Optional<StudentEntity> studentToBeDeleted = studentRepository.findById(id);
@@ -129,7 +123,6 @@ public class StudentService implements IStudentService {
     }
 
 
-    @Override
     public void deleteAllStudents() {
 
         List<Student> students = getStudents();
