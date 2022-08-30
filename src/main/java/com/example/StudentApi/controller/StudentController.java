@@ -24,7 +24,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/app/v1/students")
+@RequestMapping("/app/v1/student")
 @RequiredArgsConstructor
 public class StudentController {
 
@@ -41,7 +41,7 @@ public class StudentController {
             @ApiResponse(responseCode = "404", description = "No students were found",
                     content = @Content)
     })
-    @GetMapping
+    @GetMapping(path = "/all")
     public List<StudentResponseResource> getAllStudents() {
 
         List<StudentResponseResource> responseResources = new ArrayList<>();
@@ -154,7 +154,7 @@ public class StudentController {
             @ApiResponse(responseCode = "404", description = "No students were found",
                     content = @Content)
     })
-    @DeleteMapping()
+    @DeleteMapping(path = "/all")
     public ResponseEntity<String> deleteAllStudents() {
 
         studentService.deleteAllStudents();
