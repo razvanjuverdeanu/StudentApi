@@ -17,11 +17,11 @@ import static com.example.StudentApi.utils.Constants.*;
 @ValidateDate(value = {"dateOfBirth"}, message = AGE_BETWEEN_18_AND_100)
 public class StudentRequestResource {
 
-    @Pattern(regexp = "^[a-zA-Z]+$", message = ONLY_LETTERS)
+    @Pattern(regexp = "^[a-zA-Z][\\p{L}\\s.'\\-,]+$", message = ONLY_LETTERS)
     @Size(min = 1, max = 30, message = BETWEEN_1_AND_30)
     private String name;
 
-    @Pattern(regexp = "^[a-zA-Z]+$", message = ONLY_LETTERS)
+    @Pattern(regexp = "^[a-zA-Z][\\p{L}\\s.'\\-,]+$", message = ONLY_LETTERS)
     @Size(min = 1, max = 30, message = BETWEEN_1_AND_30)
     private String surname;
 
