@@ -1,0 +1,19 @@
+server:
+    error:
+        include-message: always
+    port: ${SERVER_PORT}
+spring:
+    datasource:
+        url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+        password: ${DB_PASSWORD}
+        username: ${DB_USERNAME}
+    jpa:
+        hibernate:
+            ddl-auto: ${DB_DDL}
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+                format_sql: true
+    mvc:
+        pathmatch:
+            matching-strategy: ANT_PATH_MATCHER
