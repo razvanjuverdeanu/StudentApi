@@ -1,5 +1,5 @@
 ## The api is published on Railway platform, in case you don't want to set locally.
-## Swagger - [https://studentapi-app.herokuapp.com/swagger-ui/index.html](https://studentapi.up.railway.app/swagger-ui/index.html#/student-controller)
+## Swagger - [https://studentapi.up.railway.app/swagger-ui/index.html#/student-controller]
 
 
 # StudentApi
