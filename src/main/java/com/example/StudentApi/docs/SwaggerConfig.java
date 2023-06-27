@@ -47,7 +47,6 @@ public class SwaggerConfig {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("Student API")
-                .description("student checker")
                 .version("1.0.0")
                 .build();
 
