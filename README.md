@@ -20,12 +20,12 @@ This project is an API created with Spring Boot. I have implemented the followin
 When you have all of the above, clone this repository and just run StudentApiApplication. 
 
 Please set this environment variables in IDE Edit Configurations
-    DB_HOST
-    DB_PORT
-    DB_NAME
-    DB_PASSWORD
-    DB_USERNAME
-    DB_DLL
+   - DB_HOST
+   - DB_PORT
+   - DB_NAME
+   - DB_PASSWORD
+   - DB_USERNAME
+   - DB_DLL
 
 * The port on which the app runs is 8085 (in my case for local). (you can change it from the application.yml)
 
