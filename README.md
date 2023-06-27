@@ -1,5 +1,5 @@
-## The api is published on Heroku platform, in case you don't want to set locally.
-## Swagger - https://studentapi-app.herokuapp.com/swagger-ui/index.html
+## The api is published on Railway platform, in case you don't want to set locally.
+## Swagger - [https://studentapi.up.railway.app/swagger-ui/index.html#/student-controller]
 
 
 # StudentApi
@@ -19,9 +19,17 @@ This project is an API created with Spring Boot. I have implemented the followin
 
 When you have all of the above, clone this repository and just run StudentApiApplication. 
 
-* The port on which the app runs is 8085. (you can change it from the application.properties)
+Please set this environment variables in IDE Edit Configurations
+   - DB_HOST
+   - DB_PORT
+   - DB_NAME
+   - DB_PASSWORD
+   - DB_USERNAME
+   - DB_DLL
 
-* In case you don't want to create&drop the table each time, you must change in application.properties
-this line -> spring.jpa.hibernate.ddl-auto=create-drop with spring.jpa.hibernate.ddl-auto=update
+* The port on which the app runs is 8085 (in my case for local). (you can change it from the application.yml)
+
+* In case you don't want to create&drop the table each time, you must change in application.yml
+this line -> ddl-aut: create-drop with ddl-auto:update
 
 * For testing I would suggest to install Postman.
