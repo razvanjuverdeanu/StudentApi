@@ -35,7 +35,9 @@ This project is an API created with Spring Boot. I have implemented the followin
 
 ## Local Setup
 - Install Java 8
-- Install postgresql
+- Install postgreSQL and configure with user and password 𝒑𝒐𝒔𝒕𝒈𝒓𝒆𝒔
+- Create a DB called Student in pgAdmin
+
 
 When you have all of the above, clone this repository and just run StudentApiApplication. 
 
