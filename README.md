@@ -1,3 +1,15 @@
+
+ 
+# StudentApi
+This project is an API created with Spring Boot. I have implemented the following requests:
+- GET (ALL)
+- GET BY ID
+- POST
+- PUT
+- PATCH
+- DELETE (ALL)
+- DELETE BY ID
+
 ## Docker setup
 
  1. Install postgreSQL and configure with user and password 𝒑𝒐𝒔𝒕𝒈𝒓𝒆𝒔
@@ -19,18 +31,6 @@
   
  7.  Once everything is running you should be able to see swagger by accessing http://localhost:8085/swagger-ui/index.html#/student-controller
 
-
-
- 
-# StudentApi
-This project is an API created with Spring Boot. I have implemented the following requests:
-- GET (ALL)
-- GET BY ID
-- POST
-- PUT
-- PATCH
-- DELETE (ALL)
-- DELETE BY ID
 
 
 ## Local Setup
