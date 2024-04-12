@@ -2,8 +2,8 @@
 
  1. Install docker desktop
  2. Open a terminal and run the following commands: 
- 	a) docker pull postgres
-	b) docker pull rjuverdeanu/studentapiapp:new_db_on_start
+ 	- a) docker pull postgres
+	- b) docker pull rjuverdeanu/studentapiapp:new_db_on_start
  3. If you type docker images you should see 2 pulled images
  4. Now we have to run the images:
   a) Before starting postgres make sure you have a folder named postgres_container_data 
