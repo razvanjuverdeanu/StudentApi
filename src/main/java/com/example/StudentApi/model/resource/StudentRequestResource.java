@@ -25,7 +25,7 @@ public class StudentRequestResource {
     @Size(min = 1, max = 30, message = BETWEEN_1_AND_30)
     private String surname;
 
-    @Pattern(regexp = "^[a-zA-Z]+$", message = ONLY_LETTERS)
+    @Pattern(regexp = "^[\\p{L}\\s.'\\-]+$", message = ONLY_LETTERS)
     @Size(min = 1, max = 30, message = BETWEEN_1_AND_30)
     private String city;
 
