@@ -21,7 +21,7 @@ This project is an API created with Spring Boot. I have implemented the followin
  5. If you type docker images you should see 2 pulled images
  6. Now we have to run the images:
   a) Before starting postgres make sure you have a folder named postgres_container_data 
-  - Run this command: docker run -d -p 5432:5432 -e POSTGRES_PASSWORD=postgres -e POSTGRES_USER=postgres -e POSTGRES_DB=Student -v C:\postgres_container_data:/var/lib/postgresql/data --name=postgres_con postgres
+  - Run this command: docker run -d -p 5432:5432 -e POSTGRES_PASSWORD=postgres -e POSTGRES_USER=postgres -e POSTGRES_DB=Student -v C:/postgres_container_data:/var/lib/postgresql/data --name=postgres_con postgres
   - Run in terminal docker ps or check in docker desktop, in Containers tab, that you have postgres_con container up and running
   b) Starting Student API  
   - Run this command: docker run -d -p 8085:8085 --name=studentapi_con rjuverdeanu/studentapiapp:new_db_on_start
